@@ -744,11 +744,11 @@
         else if ( slot->format == FT_GLYPH_FORMAT_OUTLINE )
         {
           /* apply `standard' transformation if no renderer is available */
-          if ( &internal->transform_matrix )
+          /**/ //if ( &internal->transform_matrix )
             FT_Outline_Transform( &slot->outline,
                                   &internal->transform_matrix );
 
-          if ( &internal->transform_delta )
+          /**/ //if ( &internal->transform_delta )
             FT_Outline_Translate( &slot->outline,
                                   internal->transform_delta.x,
                                   internal->transform_delta.y );
@@ -3099,8 +3099,8 @@
     if ( cmap )
     {
       FT_Face    face   = cmap->charmap.face;
-      FT_Memory  memory = FT_FACE_MEMORY( face );
-      FT_Error   error;
+      /**/ //FT_Memory  memory = FT_FACE_MEMORY( face );
+      /**/ //FT_Error   error;
       FT_Int     i, j;
 
 
@@ -3111,11 +3111,12 @@
           FT_CharMap  last_charmap = face->charmaps[face->num_charmaps - 1];
 
 
+          /* remove warning!
           if ( FT_RENEW_ARRAY( face->charmaps,
                                face->num_charmaps,
                                face->num_charmaps - 1 ) )
             return;
-
+          */
           /* remove it from our list of charmaps */
           for ( j = i + 1; j < face->num_charmaps; j++ )
           {
